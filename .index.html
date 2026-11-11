@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instagram Control Center</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #10131c;
+      color: white;
+    }
+    header {
+      padding: 20px;
+      background: #191e2b;
+      border-bottom: 1px solid #303747;
+    }
+    h1 { font-size: 21px; margin: 0 0 8px; }
+    header p { color: #aab3c5; margin: 0; }
+    main { padding: 18px; }
+    .stats {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .stat {
+      flex: 1;
+      background: #191e2b;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .stat strong {
+      display: block;
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+    .stat span { color: #aab3c5; font-size: 12px; }
+    .accounts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 12px;
+    }
+    .account {
+      background: #191e2b;
+      border: 1px solid #303747;
+      border-radius: 13px;
+      padding: 15px;
+    }
+    .account h3 { margin: 0 0 10px; font-size: 15px; }
+    .status { color: #aab3c5; font-size: 12px; }
+    button {
+      width: 100%;
+      margin-top: 13px;
+      padding: 11px;
+      border: 0;
+      border-radius: 8px;
+      background: #7555e8;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:active { opacity: .75; }
+    .note {
+      margin-top: 20px;
+      color: #aab3c5;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Instagram Control Center</h1>
+    <p>لوحة إدارة حسابات إنستغرام</p>
+  </header>
+
+  <main>
+    <div class="stats">
+      <div class="stat">
+        <strong>30</strong>
+        <span>خانة حساب</span>
+      </div>
+      <div class="stat">
+        <strong>0</strong>
+        <span>حساب مضاف</span>
+      </div>
+    </div>
+
+    <h2>حساباتي</h2>
+    <div class="accounts" id="accounts"></div>
+
+    <p class="note">
+      هذه نسخة أولية لتنظيم الحسابات وفتحها عبر إنستغرام الرسمي.
+      لا يتم حفظ كلمات المرور أو تنفيذ تفاعلات تلقائية.
+    </p>
+  </main>
+
+  <script>
+    const container = document.getElementById("accounts");
+
+    for (let i = 1; i <= 30; i++) {
+      const card = document.createElement("div");
+      card.className = "account";
+      card.innerHTML = `
+        <h3>الحساب ${i}</h3>
+        <div class="status">لم تتم إضافة الحساب</div>
+        <button type="button">فتح إنستغرام</button>
+      `;
+      card.querySelector("button").onclick = () => {
+        window.open("https://www.instagram.com/", "_blank");
+      };
+      container.appendChild(card);
+    }
+  </script>
+</body>
+</html>
